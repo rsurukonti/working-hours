@@ -44,7 +44,7 @@ public class TimeTable implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="emp_id", nullable=false)
-    private Employye employee;
+    private Employee employee;
 
     public int getId() {
         return id;

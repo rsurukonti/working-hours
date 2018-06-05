@@ -1,5 +1,6 @@
 package app.springbootdemocontroller;
 
+import app.springbootdemomodel.Employee;
 import app.springbootdemorepository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
