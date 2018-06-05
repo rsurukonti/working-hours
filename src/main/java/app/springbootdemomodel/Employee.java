@@ -1,17 +1,9 @@
 package app.springbootdemomodel;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "employee")
@@ -33,8 +25,8 @@ public class Employee implements Serializable {
     @OneToMany(mappedBy="employee")
     private Set<TimeTable> timeTable;
 
-    @OneToMany
-    private Set<TimeOff> timeOff;
+    //@OneToMany
+    //private Set<TimeOff> timeOff;
 
     protected Employee() {
     }
@@ -80,13 +72,13 @@ public class Employee implements Serializable {
 
 
 
-    public Set<TimeOff> getTimeOff() {
+    /*public Set<TimeOff> getTimeOff() {
         return timeOff;
     }
 
     public void setTimeOff(Set<TimeOff> timeOff) {
         this.timeOff = timeOff;
-    }
+    }*/
 
     @Override
     public String toString() {

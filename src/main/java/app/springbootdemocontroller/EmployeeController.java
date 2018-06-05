@@ -32,7 +32,7 @@ public List<Employee> getAll() {
 @PostMapping(value="/postemployee" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 public Employee postEmployee(@RequestBody Employee employee) {
 //requestbody is to bind the request body with a method parameter
-	repository.save(new Employee(employee.getFirstName(), employee.getLastName()));
+	repository.save(employee);
 	return employee;
 }
 
