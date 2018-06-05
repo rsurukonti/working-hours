@@ -1,0 +1,7 @@
+{
+  "timestamp": "2018-05-14T11:53:06.935+0000",
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "No class app.springbootdemomodel.Employee entity with id 12 exists!",
+  "path": "/api/employee/12"
+}
