@@ -1,6 +1,6 @@
-package app.springbootdemorepository;
+package app.springbootdemo.database.repository;
 
-import app.springbootdemomodel.Employee;
+import app.springbootdemo.database.dbmodel.Employee;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

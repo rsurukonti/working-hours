@@ -1,8 +1,9 @@
-package app.springbootdemomodel;
+package app.springbootdemo.database.dbmodel;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -22,13 +23,13 @@ public class Employee implements Serializable {
     @NotBlank
     private String lastName;
 
-    @OneToMany(mappedBy="employee")
-    private Set<TimeTable> timeTable;
+    @OneToMany(mappedBy="employee", cascade = CascadeType.ALL)
+    private Set<TimeTable> timeTable  = new HashSet<>();;
 
     //@OneToMany
     //private Set<TimeOff> timeOff;
 
-    protected Employee() {
+    public Employee() {
     }
 
     public long getId() {

@@ -1,4 +1,4 @@
-package app.springbootdemomodel;
+package app.springbootdemo.database.dbmodel;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -34,8 +34,8 @@ public class TimeTable implements Serializable {
     @NotBlank
     private String end_break;
 
-    @ManyToOne
-    @JoinColumn(name="emp_id", nullable=false)
+ //   @ManyToOne
+  //  @JoinColumn(name="emp_id", nullable = true)
     private Employee employee;
 
     public int getId() {
@@ -90,7 +90,7 @@ public class TimeTable implements Serializable {
         return serialVersionUID;
     }
 
-
-
-
+    public TimeTable() {
+        super();
+    }
 }

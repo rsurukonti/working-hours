@@ -1,9 +1,12 @@
-package app.springbootdemocontroller;
+package app.springbootdemo.controller;
 
 
-import app.springbootdemomodel.Employee;
-import app.springbootdemorepository.EmployeeRepository;
-import app.springbootdemoservice.EmployeeService;
+import app.springbootdemo.EmployeeBOMapper;
+import app.springbootdemo.EmployeeViewMapper;
+import app.springbootdemo.controller.model.EmployeeView;
+import app.springbootdemo.database.dbmodel.Employee;
+import app.springbootdemo.database.repository.EmployeeRepository;
+import app.springbootdemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +29,8 @@ public class EmployeeController {
 	}
 
 	@PostMapping(value="/postemployee" ,consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Employee postEmployee(@RequestBody Employee employee) {
-		return employeeService.postEmployee(employee);
+	public EmployeeView postEmployee(@RequestBody EmployeeView employee) {
+		return EmployeeViewMapper.from(employeeService.postEmployee(EmployeeBOMapper.from(employee)));
 	}
 
 	@GetMapping(value="/findbylastname/{lastName}",  produces=MediaType.APPLICATION_JSON_VALUE)

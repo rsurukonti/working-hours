@@ -1,8 +1,10 @@
-package app.springbootdemoservice;
+package app.springbootdemo.service;
 
 
-import app.springbootdemomodel.Employee;
-import app.springbootdemorepository.EmployeeRepository;
+import app.springbootdemo.EmployeeMapper;
+import app.springbootdemo.database.dbmodel.Employee;
+import app.springbootdemo.database.repository.EmployeeRepository;
+import app.springbootdemo.service.model.EmployeeBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +24,9 @@ public class EmployeeService {
         return list;
     }
 
-    public Employee postEmployee(Employee employee) {
-        employeeRepository.save(new Employee(employee.getFirstName(), employee.getLastName()));
-        return employee;
+    public EmployeeBO postEmployee(EmployeeBO employeeBO) {
+        employeeRepository.save(EmployeeMapper.from(employeeBO));
+        return employeeBO;
     }
 
     public List<Employee> findByLastName(String lastName) {
