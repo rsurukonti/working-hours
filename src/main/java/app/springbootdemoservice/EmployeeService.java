@@ -29,8 +29,8 @@ public class EmployeeService {
 
     public List<Employee> findByLastName(String lastName) {
 
-        List<Employee> employees = employeeRepository.findByLastName(lastName);
-        return employees;
+        List<Employee> employee = employeeRepository.findByLastName(lastName);
+        return employee;
     }
 
     public void deleteEmployee(long id){
