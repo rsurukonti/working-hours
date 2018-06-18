@@ -1,8 +1,8 @@
 package app.springbootdemo.controller;
 
 
-import app.springbootdemo.EmployeeBOMapper;
-import app.springbootdemo.EmployeeViewMapper;
+import app.springbootdemo.service.mapper.EmployeeBOMapper;
+import app.springbootdemo.controller.mapper.EmployeeViewMapper;
 import app.springbootdemo.controller.model.EmployeeView;
 import app.springbootdemo.database.dbmodel.Employee;
 import app.springbootdemo.database.repository.EmployeeRepository;

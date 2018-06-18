@@ -1,4 +1,4 @@
-package app.springbootdemo;
+package app.springbootdemo.service.mapper;
 
 import app.springbootdemo.controller.model.TimeTableView;
 import app.springbootdemo.service.model.TimeTableBO;

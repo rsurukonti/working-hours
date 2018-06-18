@@ -1,4 +1,4 @@
-package app.springbootdemo;
+package app.springbootdemo.database.mapper;
 
 import app.springbootdemo.database.dbmodel.Employee;
 import app.springbootdemo.service.model.EmployeeBO;

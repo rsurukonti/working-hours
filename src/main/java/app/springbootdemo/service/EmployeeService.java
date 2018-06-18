@@ -1,7 +1,7 @@
 package app.springbootdemo.service;
 
 
-import app.springbootdemo.EmployeeMapper;
+import app.springbootdemo.database.mapper.EmployeeMapper;
 import app.springbootdemo.database.dbmodel.Employee;
 import app.springbootdemo.database.repository.EmployeeRepository;
 import app.springbootdemo.service.model.EmployeeBO;
