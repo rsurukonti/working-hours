@@ -6,7 +6,13 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "TimeTable")
-public class TimeTable implements Serializable {
+@DiscriminatorValue("W")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+        name="timeType",
+        discriminatorType=DiscriminatorType.STRING
+)
+public class TimeTable  {
 
 
     /**
@@ -34,8 +40,8 @@ public class TimeTable implements Serializable {
     @NotBlank
     private String end_break;
 
- //   @ManyToOne
-  //  @JoinColumn(name="emp_id", nullable = true)
+   //@ManyToOne
+   //@JoinColumn(name="emp_id", nullable = true)
     private Employee employee;
 
     public int getId() {

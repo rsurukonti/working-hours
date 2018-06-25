@@ -8,14 +8,14 @@ import java.util.stream.Collectors;
 public class EmployeeMapper {
 
 
-    public static Employee from(EmployeeBO employeeView) {
+    public static Employee from(EmployeeBO employeeBO) {
 
         Employee empl = new Employee();
 
-        empl.setFirstName(employeeView.getFirstName());
-        empl.setLastName(employeeView.getLastName());
-        empl.setId(employeeView.getId());
-        empl.setTimeTable(employeeView.getTimeTable().stream().map(TimeTableMapper::from).collect(Collectors.toSet()));
+        empl.setFirstName(employeeBO.getFirstName());
+        empl.setLastName(employeeBO.getLastName());
+        empl.setId(employeeBO.getId());
+        empl.setTimeTable(employeeBO.getTimeTable().stream().map(TimeTableMapper::from).collect(Collectors.toSet()));
 
         return empl;
 

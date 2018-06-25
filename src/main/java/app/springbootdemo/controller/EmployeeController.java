@@ -1,12 +1,14 @@
 package app.springbootdemo.controller;
 
 
+import app.springbootdemo.controller.model.IllView;
 import app.springbootdemo.service.mapper.EmployeeBOMapper;
 import app.springbootdemo.controller.mapper.EmployeeViewMapper;
 import app.springbootdemo.controller.model.EmployeeView;
 import app.springbootdemo.database.dbmodel.Employee;
 import app.springbootdemo.database.repository.EmployeeRepository;
 import app.springbootdemo.service.EmployeeService;
+import app.springbootdemo.service.mapper.IllBOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +34,12 @@ public class EmployeeController {
 	public EmployeeView postEmployee(@RequestBody EmployeeView employee) {
 		return EmployeeViewMapper.from(employeeService.postEmployee(EmployeeBOMapper.from(employee)));
 	}
+
+	@PostMapping(value="/ill" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void ill(@RequestBody IllView illView) {
+		employeeService.ill(IllBOMapper.from(illView));
+	}
+
 
 	@GetMapping(value="/findbylastname/{lastName}",  produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Employee> findByLastName(@PathVariable("lastName") String lastName) {
