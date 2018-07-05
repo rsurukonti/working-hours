@@ -6,4 +6,10 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("I")
 public class Ill extends TimeTable {
+
+
+
+
+
+
 }
