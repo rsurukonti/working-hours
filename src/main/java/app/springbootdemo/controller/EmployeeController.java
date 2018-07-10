@@ -1,13 +1,15 @@
 package app.springbootdemo.controller;
 
 
-import app.springbootdemo.controller.model.IllView;
-import app.springbootdemo.service.mapper.EmployeeBOMapper;
 import app.springbootdemo.controller.mapper.EmployeeViewMapper;
 import app.springbootdemo.controller.model.EmployeeView;
+import app.springbootdemo.controller.model.HoliDayView;
+import app.springbootdemo.controller.model.IllView;
 import app.springbootdemo.database.dbmodel.Employee;
 import app.springbootdemo.database.repository.EmployeeRepository;
 import app.springbootdemo.service.EmployeeService;
+import app.springbootdemo.service.mapper.EmployeeBOMapper;
+import app.springbootdemo.service.mapper.HoliDayBOMapper;
 import app.springbootdemo.service.mapper.IllBOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -38,6 +40,11 @@ public class EmployeeController {
 	@PostMapping(value="/ill" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void ill(@RequestBody IllView illView) {
 		employeeService.ill(IllBOMapper.from(illView));
+	}
+
+	@PostMapping(value="/holiday" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void holiDay(@RequestBody HoliDayView holiDayView) {
+		employeeService.holiDay(HoliDayBOMapper.from(holiDayView));
 	}
 
 

@@ -1,12 +1,14 @@
 package app.springbootdemo.service;
 
 
-import app.springbootdemo.database.mapper.EmployeeMapper;
 import app.springbootdemo.database.dbmodel.Employee;
+import app.springbootdemo.database.mapper.EmployeeMapper;
+import app.springbootdemo.database.mapper.HoliDayMapper;
 import app.springbootdemo.database.mapper.IllMapper;
 import app.springbootdemo.database.repository.EmployeeRepository;
 import app.springbootdemo.database.repository.TimeTableRepository;
 import app.springbootdemo.service.model.EmployeeBO;
+import app.springbootdemo.service.model.HoliDayBO;
 import app.springbootdemo.service.model.IllBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +49,18 @@ public class EmployeeService {
         employeeRepository.save(emp);
     }
 
+
+    public void holiDay(HoliDayBO holiDayBO) {
+
+        String startTime = holiDayBO.getFromDate() + "9:00";
+        String endTime = holiDayBO.getToDate() + "17:00";
+
+        Employee emp = employeeRepository.findById(Long.valueOf(holiDayBO.getId())).get();
+
+        emp.getTimeTable().add(HoliDayMapper.from(startTime, endTime,"334","321"));
+
+        employeeRepository.save(emp);
+    }
     public List<Employee> findByLastName(String lastName) {
 
         List<Employee> employee = employeeRepository.findByLastName(lastName);
