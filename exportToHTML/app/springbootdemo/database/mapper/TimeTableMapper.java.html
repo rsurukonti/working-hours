@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>TimeTableMapper.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+TimeTableMapper.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">app.springbootdemo.database.mapper; 
+ 
+</span><span class="s0">import </span><span class="s1">app.springbootdemo.database.dbmodel.TimeTable; 
+</span><span class="s0">import </span><span class="s1">app.springbootdemo.service.model.TimeTableBO; 
+ 
+</span><span class="s0">public class </span><span class="s1">TimeTableMapper { 
+ 
+    </span><span class="s0">public static </span><span class="s1">TimeTable from (TimeTableBO timeTableBO) { 
+        TimeTable timeTable = </span><span class="s0">new </span><span class="s1">TimeTable(); 
+        timeTable.setBegin(timeTableBO.getBegin()); 
+        timeTable.setBegin_break(timeTableBO.getBegin_break()); 
+        timeTable.setEnd(timeTableBO.getEnd()); 
+        timeTable.setEnd_break(timeTableBO.getEnd_break()); 
+        timeTable.setId(timeTableBO.getId()); 
+ 
+        </span><span class="s0">return </span><span class="s1">timeTable; 
+    } 
+} 
+</span></pre>
+</body>
+</html>

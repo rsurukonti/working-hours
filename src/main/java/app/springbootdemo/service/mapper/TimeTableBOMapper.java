@@ -9,8 +9,8 @@ public class TimeTableBOMapper {
         TimeTableBO timeTableBO = new TimeTableBO();
         timeTableBO.setBegin(timeTableView.getBegin());
         timeTableBO.setBegin_break(timeTableView.getBegin_break());
-        timeTableBO.setEnd(timeTableView.getEnd());
         timeTableBO.setEnd_break(timeTableView.getEnd_break());
+        timeTableBO.setEnd(timeTableView.getEnd());
         timeTableBO.setId(timeTableView.getId());
 
         return timeTableBO;

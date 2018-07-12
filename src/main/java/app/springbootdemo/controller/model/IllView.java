@@ -1,5 +1,6 @@
 package app.springbootdemo.controller.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ public class IllView {
 
     private String empId;
 
-    private String illDate;
+    private Date illDate;
 
     public String getEmpId() {
         return empId;
@@ -20,11 +21,11 @@ public class IllView {
     }
 
 
-    public String getIllDate() {
+    public Date getIllDate() {
         return illDate;
     }
 
-    public void setIllDate(String illDate) {
+    public void setIllDate(Date illDate) {
         this.illDate = illDate;
     }
 }

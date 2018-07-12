@@ -2,13 +2,15 @@ package app.springbootdemo.database.mapper;
 
 import app.springbootdemo.database.dbmodel.Ill;
 
+import java.util.Date;
+
 public class IllMapper {
 
-        public static Ill from (String begin, String end, String beginBreak, String endBreak) {
+        public static Ill from (Date startTime, Date endTime, Date beginBreak, Date endBreak) {
             Ill ill = new Ill();
-            ill.setBegin(begin);
-            ill.setBegin_break(endBreak);
-            ill.setEnd(end);
+            ill.setBegin(startTime);
+            ill.setBegin_break(beginBreak);
+            ill.setEnd(endTime);
             ill.setEnd_break(endBreak);
 
             return ill;

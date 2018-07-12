@@ -25,9 +25,12 @@ public class Employee implements Serializable {
     @NotBlank
     private String lastName;
 
-    @OneToMany(mappedBy="employee", cascade = CascadeType.ALL)
-    private Set<TimeTable> timeTable  = new HashSet<>();;
+    @OneToMany(cascade=CascadeType.ALL)
+    private Set<TimeTable> timeTable = new HashSet<TimeTable>();
 
+   /* @OneToMany(  cascade = CascadeType.ALL)
+    private Set<TimeTable> timeTable  = new HashSet<>();
+*/
     //@OneToMany
     //private Set<TimeOff> timeOff;
 

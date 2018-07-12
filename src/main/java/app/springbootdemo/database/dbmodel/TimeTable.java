@@ -1,19 +1,25 @@
 package app.springbootdemo.database.dbmodel;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @Entity
-@Table(name = "TimeTable")
+@Table(name = "WORKING_CALENDAR")
 @DiscriminatorValue("W")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-        name="timeType",
-        discriminatorType=DiscriminatorType.STRING
-)
-public class TimeTable  {
+@DiscriminatorColumn(name="timeType",
+        discriminatorType=DiscriminatorType.STRING)
 
+public class TimeTable implements Serializable {
+
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
 
     /**
      *
@@ -24,25 +30,21 @@ public class TimeTable  {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "begin")
-    @NotBlank
-    private String begin;
-
-    @Column(name = "end")
-    @NotBlank
-    private String end;
+    @Column(name = "Start_Time")
+    @JsonDeserialize(using=CustomerDateAndTimeDeserialize.class)
+    private Date begin;
 
     @Column(name = "begin_break")
-    @NotBlank
-    private String begin_break;
+    @JsonDeserialize(using=CustomerDateAndTimeDeserialize.class)
+    private Date begin_break;
 
     @Column(name = "end_break")
-    @NotBlank
-    private String end_break;
+    @JsonDeserialize(using=CustomerDateAndTimeDeserialize.class)
+    private Date end_break;
 
-   //@ManyToOne
-   //@JoinColumn(name="emp_id", nullable = true)
-    private Employee employee;
+    @Column(name = "end_Time")
+    @JsonDeserialize(using=CustomerDateAndTimeDeserialize.class)
+    private Date end;
 
     public int getId() {
         return id;
@@ -52,51 +54,37 @@ public class TimeTable  {
         this.id = id;
     }
 
-    public String getBegin() {
+    public Date getBegin() {
         return begin;
     }
 
-    public void setBegin(String begin) {
+    public void setBegin(Date begin) {
         this.begin = begin;
     }
 
-    public String getEnd() {
-        return end;
-    }
-
-    public void setEnd(String end) {
-        this.end = end;
-    }
-
-    public String getBegin_break() {
+    public Date getBegin_break() {
         return begin_break;
     }
 
-    public void setBegin_break(String begin_break) {
+    public void setBegin_break(Date begin_break) {
         this.begin_break = begin_break;
     }
 
-    public String getEnd_break() {
+    public Date getEnd_break() {
         return end_break;
     }
 
-    public void setEnd_break(String end_break) {
+    public void setEnd_break(Date end_break) {
         this.end_break = end_break;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Date getEnd() {
+        return end;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
 
-    public TimeTable() {
-        super();
-    }
 }

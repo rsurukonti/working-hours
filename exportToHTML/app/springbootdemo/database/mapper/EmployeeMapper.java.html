@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>EmployeeMapper.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+EmployeeMapper.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">app.springbootdemo.database.mapper; 
+ 
+</span><span class="s0">import </span><span class="s1">app.springbootdemo.database.dbmodel.Employee; 
+</span><span class="s0">import </span><span class="s1">app.springbootdemo.service.model.EmployeeBO; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.stream.Collectors; 
+ 
+</span><span class="s0">public class </span><span class="s1">EmployeeMapper { 
+ 
+ 
+    </span><span class="s0">public static </span><span class="s1">Employee from(EmployeeBO employeeBO) { 
+ 
+        Employee empl = </span><span class="s0">new </span><span class="s1">Employee(); 
+ 
+        empl.setFirstName(employeeBO.getFirstName()); 
+        empl.setLastName(employeeBO.getLastName()); 
+        empl.setId(employeeBO.getId()); 
+        empl.setTimeTable(employeeBO.getTimeTable().stream().map(TimeTableMapper::from).collect(Collectors.toSet())); 
+ 
+        </span><span class="s0">return </span><span class="s1">empl; 
+ 
+    } 
+} 
+</span></pre>
+</body>
+</html>

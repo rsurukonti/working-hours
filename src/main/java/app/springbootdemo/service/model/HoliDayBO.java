@@ -1,15 +1,17 @@
 package app.springbootdemo.service.model;
 
 
+import java.util.Date;
+
 public class HoliDayBO {
 
     private long id;
 
-    private String leaveType;
+    private Date leaveType;
 
-    private String fromDate;
+    private Date fromDate;
 
-    private String toDate;
+    private Date toDate;
 
     public long getId() {
         return id;
@@ -19,27 +21,27 @@ public class HoliDayBO {
         this.id = id;
     }
 
-    public String getLeaveType() {
+    public Date getLeaveType() {
         return leaveType;
     }
 
-    public void setLeaveType(String leaveType) {
+    public void setLeaveType(Date leaveType) {
         this.leaveType = leaveType;
     }
 
-    public String getFromDate() {
+    public Date getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(String fromDate) {
+    public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
-    public String getToDate() {
+    public Date getToDate() {
         return toDate;
     }
 
-    public void setToDate(String toDate) {
+    public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 

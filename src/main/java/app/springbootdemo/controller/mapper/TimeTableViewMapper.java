@@ -3,7 +3,7 @@ package app.springbootdemo.controller.mapper;
 import app.springbootdemo.controller.model.TimeTableView;
 import app.springbootdemo.service.model.TimeTableBO;
 
-public class TimeTableViewMapper {
+public class  TimeTableViewMapper {
 
     public static TimeTableView from (TimeTableBO timeTableBO) {
         TimeTableView timeTable = new TimeTableView();

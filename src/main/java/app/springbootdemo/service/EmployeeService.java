@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -39,12 +40,12 @@ public class EmployeeService {
 
     public void ill(IllBO illBO) {
 
-        String startTime = illBO.getIllDate() + "9:00";
-        String endTime = illBO.getIllDate() + "17:00";
+        Date startTime = illBO.getIllDate();
+        Date endTime = illBO.getIllDate();
 
         Employee emp = employeeRepository.findById(Long.valueOf(illBO.getEmpId())).get();
 
-        emp.getTimeTable().add(IllMapper.from(startTime, endTime,"33214","32141"));
+        emp.getTimeTable().add(IllMapper.from(startTime,null,null, endTime));
 
         employeeRepository.save(emp);
     }
@@ -52,12 +53,12 @@ public class EmployeeService {
 
     public void holiDay(HoliDayBO holiDayBO) {
 
-        String startTime = holiDayBO.getFromDate() + "9:00";
-        String endTime = holiDayBO.getToDate() + "17:00";
+        Date startTime = holiDayBO.getFromDate();
+        Date endTime = holiDayBO.getToDate();
 
         Employee emp = employeeRepository.findById(Long.valueOf(holiDayBO.getId())).get();
 
-        emp.getTimeTable().add(HoliDayMapper.from(startTime, endTime,"334","321"));
+        emp.getTimeTable().add(HoliDayMapper.from(startTime, null,null, endTime));
 
         employeeRepository.save(emp);
     }

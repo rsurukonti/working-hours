@@ -9,8 +9,8 @@ public class TimeTableMapper {
         TimeTable timeTable = new TimeTable();
         timeTable.setBegin(timeTableBO.getBegin());
         timeTable.setBegin_break(timeTableBO.getBegin_break());
-        timeTable.setEnd(timeTableBO.getEnd());
         timeTable.setEnd_break(timeTableBO.getEnd_break());
+        timeTable.setEnd(timeTableBO.getEnd());
         timeTable.setId(timeTableBO.getId());
 
         return timeTable;

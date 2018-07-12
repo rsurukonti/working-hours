@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,10 +32,10 @@ public class DemoApplicationTests {
 
         final TimeTableView ttv = new TimeTableView();
         ttv.setId(21);
-        ttv.setBegin("9");
-        ttv.setEnd("18");
-        ttv.setBegin_break("12");
-        ttv.setEnd_break("13");
+        ttv.setBegin(new Date());
+        ttv.setEnd(new Date());
+        ttv.setBegin_break(new Date());
+        ttv.setEnd_break(new Date());
 
         timeTableViews.add(ttv);
 
@@ -49,10 +50,10 @@ public class DemoApplicationTests {
 
         final TimeTableBO tt = new TimeTableBO();
         tt.setId(21);
-        tt.setBegin("9");
-        tt.setEnd("18");
-        tt.setBegin_break("12");
-        tt.setEnd_break("13");
+        tt.setBegin(new Date());
+        tt.setEnd(new Date());
+        tt.setBegin_break(new Date());
+        tt.setEnd_break(new Date());
 
         timeTable.add(tt);
 
