@@ -32,10 +32,10 @@ public class DemoApplicationTests {
 
         final TimeTableView ttv = new TimeTableView();
         ttv.setId(21);
-        ttv.setBegin(new Date());
-        ttv.setEnd(new Date());
-        ttv.setBegin_break(new Date());
-        ttv.setEnd_break(new Date());
+        ttv.setBegin(new String());
+        ttv.setEnd(new String());
+        ttv.setBegin_break(new String());
+        ttv.setEnd_break(new String());
 
         timeTableViews.add(ttv);
 
@@ -50,10 +50,10 @@ public class DemoApplicationTests {
 
         final TimeTableBO tt = new TimeTableBO();
         tt.setId(21);
-        tt.setBegin(new Date());
-        tt.setEnd(new Date());
-        tt.setBegin_break(new Date());
-        tt.setEnd_break(new Date());
+        tt.setBegin(new String());
+        tt.setEnd(new String());
+        tt.setBegin_break(new String());
+        tt.setEnd_break(new String());
 
         timeTable.add(tt);
 

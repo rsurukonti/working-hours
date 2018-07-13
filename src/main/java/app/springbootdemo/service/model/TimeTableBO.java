@@ -1,6 +1,6 @@
 package app.springbootdemo.service.model;
 
-import java.util.Date;
+import java.lang.String;
 
 public class TimeTableBO {
 
@@ -8,13 +8,13 @@ public class TimeTableBO {
 
     private int id;
 
-    private Date begin;
+    private String begin;
 
-    private Date begin_break;
+    private String begin_break;
 
-    private Date end_break;
+    private String end_break;
 
-    private Date end;
+    private String end;
 
 
     public static long getSerialVersionUID() {
@@ -29,36 +29,36 @@ public class TimeTableBO {
         this.id = id;
     }
 
-    public Date getBegin() {
+    public String getBegin() {
         return begin;
     }
 
-    public void setBegin(Date begin) {
+    public void setBegin(String begin) {
         this.begin = begin;
     }
 
 
-    public Date getBegin_break() {
+    public String getBegin_break() {
         return begin_break;
     }
 
-    public void setBegin_break(Date begin_break) {
+    public void setBegin_break(String begin_break) {
         this.begin_break = begin_break;
     }
 
-    public Date getEnd_break() {
+    public String getEnd_break() {
         return end_break;
     }
 
-    public void setEnd_break(Date end_break) {
+    public void setEnd_break(String end_break) {
         this.end_break = end_break;
     }
 
-    public Date getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 }

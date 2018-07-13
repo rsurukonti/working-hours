@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "WORKING_CALENDAR")
@@ -31,20 +32,22 @@ public class TimeTable implements Serializable {
     private int id;
 
     @Column(name = "Start_Time")
-    @JsonDeserialize(using=CustomerDateAndTimeDeserialize.class)
-    private Date begin;
-
-    @Column(name = "begin_break")
-    @JsonDeserialize(using=CustomerDateAndTimeDeserialize.class)
-    private Date begin_break;
-
-    @Column(name = "end_break")
-    @JsonDeserialize(using=CustomerDateAndTimeDeserialize.class)
-    private Date end_break;
+    @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
+    @JsonDeserialize(using=StartDateTimeDeserialize.class)
+    private String begin;
 
     @Column(name = "end_Time")
-    @JsonDeserialize(using=CustomerDateAndTimeDeserialize.class)
-    private Date end;
+    @JsonDeserialize(using=EndDateTimeDeserialize.class)
+    private String end;
+
+    @Column(name = "begin_break")
+    @DateTimeFormat(iso=DateTimeFormat.ISO.TIME)
+    @JsonDeserialize(using=BreakDateTimeDeserialize.class)
+    private String begin_break;
+
+    @Column(name = "end_break")
+    @JsonDeserialize(using=BreakDateTimeDeserialize.class)
+    private String end_break;
 
     public int getId() {
         return id;
@@ -54,37 +57,41 @@ public class TimeTable implements Serializable {
         this.id = id;
     }
 
-    public Date getBegin() {
+
+
+    public String getBegin() {
         return begin;
     }
 
-    public void setBegin(Date begin) {
+    public void setBegin(String begin) {
         this.begin = begin;
     }
 
-    public Date getBegin_break() {
-        return begin_break;
-    }
-
-    public void setBegin_break(Date begin_break) {
-        this.begin_break = begin_break;
-    }
-
-    public Date getEnd_break() {
-        return end_break;
-    }
-
-    public void setEnd_break(Date end_break) {
-        this.end_break = end_break;
-    }
-
-    public Date getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(String end) {
         this.end = end;
     }
+
+    public String getBegin_break() {
+        return begin_break;
+    }
+
+    public void setBegin_break(String begin_break) {
+        this.begin_break = begin_break;
+    }
+
+    public String getEnd_break() {
+        return end_break;
+    }
+
+    public void setEnd_break(String end_break) {
+        this.end_break = end_break;
+    }
+
+
 
 
 }

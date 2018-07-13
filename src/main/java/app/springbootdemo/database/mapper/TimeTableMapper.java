@@ -2,6 +2,7 @@ package app.springbootdemo.database.mapper;
 
 import app.springbootdemo.database.dbmodel.TimeTable;
 import app.springbootdemo.service.model.TimeTableBO;
+import java.lang.String;
 
 public class TimeTableMapper {
 

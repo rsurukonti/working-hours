@@ -40,8 +40,8 @@ public class EmployeeService {
 
     public void ill(IllBO illBO) {
 
-        Date startTime = illBO.getIllDate();
-        Date endTime = illBO.getIllDate();
+        String startTime = illBO.getIllDate() + "10.01.1989";
+        String endTime = illBO.getIllDate() + "10.02.1969";
 
         Employee emp = employeeRepository.findById(Long.valueOf(illBO.getEmpId())).get();
 
@@ -53,8 +53,8 @@ public class EmployeeService {
 
     public void holiDay(HoliDayBO holiDayBO) {
 
-        Date startTime = holiDayBO.getFromDate();
-        Date endTime = holiDayBO.getToDate();
+        String startTime = holiDayBO.getFromDate() + "10.02.1969";
+        String endTime = holiDayBO.getToDate() + "10.02.1969";
 
         Employee emp = employeeRepository.findById(Long.valueOf(holiDayBO.getId())).get();
 

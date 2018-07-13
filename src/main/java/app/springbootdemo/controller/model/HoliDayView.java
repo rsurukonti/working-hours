@@ -1,16 +1,16 @@
 package app.springbootdemo.controller.model;
 
-import java.util.Date;
+import java.lang.String;
 
 public class HoliDayView {
 
     private long id;
 
-    private Date leaveType;
+    private String leaveType;
 
-    private Date fromDate;
+    private String fromDate;
 
-    private Date toDate;
+    private String toDate;
 
     public long getId() {
         return id;
@@ -20,27 +20,27 @@ public class HoliDayView {
         this.id = id;
     }
 
-    public Date getLeaveType() {
+    public String getLeaveType() {
         return leaveType;
     }
 
-    public void setLeaveType(Date leaveType) {
+    public void setLeaveType(String leaveType) {
         this.leaveType = leaveType;
     }
 
-    public Date getFromDate() {
+    public String getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(String fromDate) {
         this.fromDate = fromDate;
     }
 
-    public Date getToDate() {
+    public String getToDate() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(String toDate) {
         this.toDate = toDate;
     }
 
