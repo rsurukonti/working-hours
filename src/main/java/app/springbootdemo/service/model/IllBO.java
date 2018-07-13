@@ -7,7 +7,7 @@ public class IllBO {
 
     private String empId;
 
-    private Date illDate;
+    private String illDate;
 
 
     public String getEmpId() {
@@ -18,11 +18,11 @@ public class IllBO {
         this.empId = empId;
     }
 
-    public Date getIllDate() {
+    public String getIllDate() {
         return illDate;
     }
 
-    public void setIllDate(Date illDate) {
+    public void setIllDate(String illDate) {
         this.illDate = illDate;
     }
 }
