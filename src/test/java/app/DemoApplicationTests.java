@@ -24,7 +24,6 @@ public class DemoApplicationTests {
     public void contextLoads() {
     }
 
-
     @Test
     public void testEmployeeBoMapper() {
         // Create input employee
@@ -70,3 +69,5 @@ public class DemoApplicationTests {
     }
 
 }
+
+

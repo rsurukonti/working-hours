@@ -53,12 +53,16 @@ public class EmployeeService {
 
     public void holiDay(HoliDayBO holiDayBO) {
 
-        String startTime = holiDayBO.getFromDate() + "10.02.1969";
-        String endTime = holiDayBO.getToDate() + "10.02.1969";
+        String startTime = holiDayBO.getFromDate() + "8:00";
+        String endTime = holiDayBO.getToDate() + "16:00";
+        String begin_Break = holiDayBO.getToDate() + "11:30";
+        String end_Break = holiDayBO.getToDate() + "12:00";
+
+
 
         Employee emp = employeeRepository.findById(Long.valueOf(holiDayBO.getId())).get();
 
-        emp.getTimeTable().add(HoliDayMapper.from(startTime, null,null, endTime));
+        emp.getTimeTable().add(HoliDayMapper.from(startTime, begin_Break, end_Break, endTime));
 
         employeeRepository.save(emp);
     }
