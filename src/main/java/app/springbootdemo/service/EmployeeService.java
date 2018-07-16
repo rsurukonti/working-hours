@@ -40,12 +40,14 @@ public class EmployeeService {
 
     public void ill(IllBO illBO) {
 
-        String startTime = illBO.getIllDate() + "10.01.1989";
-        String endTime = illBO.getIllDate() + "10.02.1969";
+        String startTime = illBO.getIllDate() + "8:00";
+        String endTime = illBO.getIllDate() + "16:00";
+        String begin_Break = illBO.getIllDate() + "16:00";
+        String end_Break = illBO.getIllDate() + "16:00";
 
         Employee emp = employeeRepository.findById(Long.valueOf(illBO.getEmpId())).get();
 
-        emp.getTimeTable().add(IllMapper.from(startTime,null,null, endTime));
+        emp.getTimeTable().add(IllMapper.from(startTime, begin_Break, end_Break, endTime));
 
         employeeRepository.save(emp);
     }
@@ -55,7 +57,7 @@ public class EmployeeService {
 
         String startTime = holiDayBO.getFromDate() + "8:00";
         String endTime = holiDayBO.getToDate() + "16:00";
-        String begin_Break = holiDayBO.getToDate() + "11:30";
+        String begin_Break = holiDayBO.getFromDate() + "11:30";
         String end_Break = holiDayBO.getToDate() + "12:00";
 
 

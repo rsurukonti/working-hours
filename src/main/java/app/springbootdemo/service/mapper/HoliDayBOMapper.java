@@ -16,4 +16,5 @@ public class HoliDayBOMapper {
         holiDayBO.setToDate(holiDayView.getToDate());
 
         return holiDayBO;
-    }}
+    }
+}
