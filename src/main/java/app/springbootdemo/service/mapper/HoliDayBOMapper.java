@@ -7,7 +7,6 @@ import app.springbootdemo.service.model.HoliDayBO;
 public class HoliDayBOMapper {
 
     public static HoliDayBO from (HoliDayView holiDayView) {
-
         HoliDayBO holiDayBO = new HoliDayBO();
 
         holiDayBO.setId(holiDayView.getId());
