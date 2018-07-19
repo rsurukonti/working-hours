@@ -28,11 +28,11 @@ public class Employee implements Serializable {
     @OneToMany(cascade=CascadeType.ALL)
     private Set<TimeTable> timeTable = new HashSet<TimeTable>();
 
-   /* @OneToMany(  cascade = CascadeType.ALL)
-    private Set<TimeTable> timeTable  = new HashSet<>();
-*/
+   // @OneToMany(cascade=CascadeType.ALL)
+   //private Set<TimeTable> timeTable = new HashSet<TimeTable>();
+
     //@OneToMany
-    //private Set<TimeOff> timeOff;
+   // private Set<TimeOff> timeOff;
 
     public Employee() {
     }
@@ -78,7 +78,7 @@ public class Employee implements Serializable {
 
 
 
-    /*public Set<TimeOff> getTimeOff() {
+   /* public Set<TimeOff> getTimeOff() {
         return timeOff;
     }
 

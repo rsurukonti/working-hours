@@ -40,10 +40,11 @@ public class EmployeeService {
 
     public void ill(IllBO illBO) {
 
-        String startTime = illBO.getIllDate() + "8:00";
-        String endTime = illBO.getIllDate() + "16:00";
-        String begin_Break = illBO.getIllDate() + "16:00";
-        String end_Break = illBO.getIllDate() + "16:00";
+        Date startTime = illBO.getIllDate();// + "8:00";
+        Date endTime = illBO.getIllDate();// + "16:00";
+        Date begin_Break = illBO.getIllDate();// + "12:00";
+        Date end_Break = illBO.getIllDate();// + "12:30";
+
 
         Employee emp = employeeRepository.findById(Long.valueOf(illBO.getEmpId())).get();
 
@@ -55,10 +56,11 @@ public class EmployeeService {
 
     public void holiDay(HoliDayBO holiDayBO) {
 
-        String startTime = holiDayBO.getFromDate() + "8:00";
-        String endTime = holiDayBO.getToDate() + "16:00";
-        String begin_Break = holiDayBO.getFromDate() + "11:30";
-        String end_Break = holiDayBO.getToDate() + "12:00";
+        Date startTime = holiDayBO.getFromDate();// + "8:00";
+        Date endTime = holiDayBO.getToDate();// + "16:00";
+        Date begin_Break = holiDayBO.getFromDate();// + "11:30";
+        Date end_Break = holiDayBO.getToDate();// + "12:00";
+
 
 
 

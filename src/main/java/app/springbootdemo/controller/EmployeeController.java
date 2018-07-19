@@ -6,6 +6,7 @@ import app.springbootdemo.controller.model.EmployeeView;
 import app.springbootdemo.controller.model.HoliDayView;
 import app.springbootdemo.controller.model.IllView;
 import app.springbootdemo.database.dbmodel.Employee;
+import app.springbootdemo.database.dbmodel.TimeOff;
 import app.springbootdemo.database.repository.EmployeeRepository;
 import app.springbootdemo.service.EmployeeService;
 import app.springbootdemo.service.mapper.EmployeeBOMapper;
@@ -33,14 +34,20 @@ public class EmployeeController {
 	}
 
 	@PostMapping(value="/postemployee" ,consumes=MediaType.APPLICATION_JSON_VALUE)
-	public EmployeeView postEmployee(@RequestBody EmployeeView employee) {
-		return EmployeeViewMapper.from(employeeService.postEmployee(EmployeeBOMapper.from(employee)));
+	public EmployeeView postEmployee(@RequestBody EmployeeView employeeView) {
+		return EmployeeViewMapper.from(employeeService.postEmployee(EmployeeBOMapper.from(employeeView)));
 	}
+
+	/*@PostMapping(value="/posttimeoff" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public TimeOff posttimeoff(@RequestBody TimeOff timeoff) {
+		return timeoff;
+	}*/
 
 	@PostMapping(value="/ill" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void ill(@RequestBody IllView illView) {
 		employeeService.ill(IllBOMapper.from(illView));
 	}
+
 
 	@PostMapping(value="/holiday" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void holiDay(@RequestBody HoliDayView holiDayView) {

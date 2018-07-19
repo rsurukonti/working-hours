@@ -2,6 +2,7 @@ package app.springbootdemo.service.model;
 
 
 import java.lang.String;
+import java.util.Date;
 
 public class HoliDayBO {
 
@@ -9,9 +10,9 @@ public class HoliDayBO {
 
     private String leaveType;
 
-    private String fromDate;
+    private Date fromDate;
 
-    private String toDate;
+    private Date toDate;
 
     public long getId() {
         return id;
@@ -29,19 +30,19 @@ public class HoliDayBO {
         this.leaveType = this.leaveType;
     }
 
-    public String getFromDate() {
+    public Date getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(String fromDate) {
+    public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
-    public String getToDate() {
+    public Date getToDate() {
         return toDate;
     }
 
-    public void setToDate(String toDate) {
+    public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 

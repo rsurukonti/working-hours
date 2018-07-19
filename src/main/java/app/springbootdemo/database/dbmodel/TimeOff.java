@@ -6,58 +6,58 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "timeoff")
-public class TimeOff {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="timeoff_id")
-    private long id;
+    public class TimeOff {
 
-    @Column(name="leavetype")
-    private String leaveType;
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "timeoff_id")
+        private long id;
 
-    @Column(name="fromDate")
-    private String fromDate;
+        @Column(name = "leavetype")
+        private String leaveType;
 
-    @Column(name="toDate")
-    private String toDate;
+        @Column(name = "fromDate")
+        private String fromDate;
 
-    public long getId() {
-        return id;
-    }
+        @Column(name = "toDate")
+        private String toDate;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+        public long getId() {
+            return id;
+        }
 
-    public String getLeaveType() {
-        return leaveType;
-    }
+        public void setId(long id) {
+            this.id = id;
+        }
 
-    public void setLeaveType(String leaveType) {
-        this.leaveType = leaveType;
-    }
+        public String getLeaveType() {
+            return leaveType;
+        }
 
-    public String getFromDate() {
-        return fromDate;
-    }
+        public void setLeaveType(String leaveType) {
+            this.leaveType = leaveType;
+        }
 
-    public void setFromDate(String fromDate) {
-        this.fromDate = fromDate;
-    }
+        public String getFromDate() {
+            return fromDate;
+        }
 
-    public String getToDate() {
-        return toDate;
-    }
+        public void setFromDate(String fromDate) {
+            this.fromDate = fromDate;
+        }
 
-    public void setToDate(String toDate) {
-        this.toDate = toDate;
-    }
+        public String getToDate() {
+            return toDate;
+        }
 
+        public void setToDate(String toDate) {
+            this.toDate = toDate;
+        }
 
-
-}
+        }
 

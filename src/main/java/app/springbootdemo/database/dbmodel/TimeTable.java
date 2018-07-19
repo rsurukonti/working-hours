@@ -34,20 +34,21 @@ public class TimeTable implements Serializable {
     @Column(name = "Start_Time")
     @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
     @JsonDeserialize(using=StartDateTimeDeserialize.class)
-    private String begin;
-
-    @Column(name = "end_Time")
-    @JsonDeserialize(using=EndDateTimeDeserialize.class)
-    private String end;
+    private Date begin;
 
     @Column(name = "begin_break")
     @DateTimeFormat(iso=DateTimeFormat.ISO.TIME)
     @JsonDeserialize(using=BreakDateTimeDeserialize.class)
-    private String begin_break;
+    private Date begin_break;
 
     @Column(name = "end_break")
     @JsonDeserialize(using=BreakDateTimeDeserialize.class)
-    private String end_break;
+    private Date end_break;
+
+    @Column(name = "end_Time")
+    @JsonDeserialize(using=EndDateTimeDeserialize.class)
+    private Date end;
+
 
     public int getId() {
         return id;
@@ -59,36 +60,36 @@ public class TimeTable implements Serializable {
 
 
 
-    public String getBegin() {
+    public Date getBegin() {
         return begin;
     }
 
-    public void setBegin(String begin) {
+    public void setBegin(Date begin) {
         this.begin = begin;
     }
 
-    public String getEnd() {
-        return end;
-    }
 
-    public void setEnd(String end) {
-        this.end = end;
-    }
-
-    public String getBegin_break() {
+    public Date getBegin_break() {
         return begin_break;
     }
 
-    public void setBegin_break(String begin_break) {
+    public void setBegin_break(Date begin_break) {
         this.begin_break = begin_break;
     }
 
-    public String getEnd_break() {
+    public Date getEnd_break() {
         return end_break;
     }
 
-    public void setEnd_break(String end_break) {
+    public void setEnd_break(Date end_break) {
         this.end_break = end_break;
+    }
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
 
