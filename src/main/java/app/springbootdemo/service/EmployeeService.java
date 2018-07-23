@@ -2,6 +2,7 @@ package app.springbootdemo.service;
 
 
 import app.springbootdemo.database.dbmodel.Employee;
+import app.springbootdemo.database.dbmodel.TimeTable;
 import app.springbootdemo.database.mapper.EmployeeMapper;
 import app.springbootdemo.database.mapper.HoliDayMapper;
 import app.springbootdemo.database.mapper.IllMapper;
@@ -96,5 +97,25 @@ public class EmployeeService {
     public void deleteEmployee(long id){
 
         employeeRepository.deleteById(id);
+    }
+
+    public void startTime(long pEmployeeId){
+        Employee emp = employeeRepository.findById(pEmployeeId).get();
+        TimeTable lcWorkingDay = (TimeTable) (emp.getTimeTable().toArray())[0];
+        lcWorkingDay.setBegin(new Date());
+
+        timeTableRepository.save(lcWorkingDay);
+    }
+
+    public void endTime(long pEmployeeId){
+        Employee emp = employeeRepository.findById(pEmployeeId).get();
+        TimeTable lcWorkingDay = (TimeTable) (emp.getTimeTable().toArray())[0];
+        lcWorkingDay.setEnd(new Date());
+
+        Date newdate = new Date();
+        newdate.setYear(2019);
+        newdate.setMonth(11);
+
+        timeTableRepository.save(lcWorkingDay);
     }
 }

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 public class EndDateTimeDeserialize extends JsonDeserializer<String> {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-
+    //SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Override
     public String deserialize(JsonParser paramJsonParser,
                               DeserializationContext paramDeserializationContext)

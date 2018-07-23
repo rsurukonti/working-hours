@@ -62,8 +62,18 @@ public class EmployeeController {
 		return employeeService.findByLastName(lastName);
 	}
 
-	@DeleteMapping(value="/employee/{id}")
+	@DeleteMapping(value="/employee/{id}/delete")
 	public void deleteEmployee(@PathVariable long id){
 		employeeService.deleteEmployee(id);
+	}
+
+	@PostMapping(value="/employee/{id}/start" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void startTime(@PathVariable long id) {
+		employeeService.startTime(id);
+	}
+
+	@PostMapping(value="/employee/{id}/stop" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void endTime(@PathVariable long id) {
+		employeeService.endTime(id);
 	}
 }
