@@ -5,6 +5,7 @@ import app.springbootdemo.controller.mapper.EmployeeViewMapper;
 import app.springbootdemo.controller.model.EmployeeView;
 import app.springbootdemo.controller.model.HoliDayView;
 import app.springbootdemo.controller.model.IllView;
+import app.springbootdemo.controller.model.TimeOffView;
 import app.springbootdemo.database.dbmodel.Employee;
 import app.springbootdemo.database.dbmodel.TimeOff;
 import app.springbootdemo.database.repository.EmployeeRepository;
@@ -12,6 +13,7 @@ import app.springbootdemo.service.EmployeeService;
 import app.springbootdemo.service.mapper.EmployeeBOMapper;
 import app.springbootdemo.service.mapper.HoliDayBOMapper;
 import app.springbootdemo.service.mapper.IllBOMapper;
+import app.springbootdemo.service.mapper.TimeOffBOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -38,10 +40,10 @@ public class EmployeeController {
 		return EmployeeViewMapper.from(employeeService.postEmployee(EmployeeBOMapper.from(employeeView)));
 	}
 
-	/*@PostMapping(value="/posttimeoff" ,consumes=MediaType.APPLICATION_JSON_VALUE)
-	public TimeOff posttimeoff(@RequestBody TimeOff timeoff) {
-		return timeoff;
-	}*/
+	@PostMapping(value="/timeoff" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void timeOff(@RequestBody TimeOffView timeOffView) {
+		employeeService.timeOff(TimeOffBOMapper.from(timeOffView));
+	}
 
 	@PostMapping(value="/ill" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void ill(@RequestBody IllView illView) {

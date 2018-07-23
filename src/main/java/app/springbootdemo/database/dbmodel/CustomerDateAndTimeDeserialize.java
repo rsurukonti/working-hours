@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 
 public class CustomerDateAndTimeDeserialize extends JsonDeserializer<Date> {
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
     @Override
     public Date deserialize(JsonParser paramJsonParser,

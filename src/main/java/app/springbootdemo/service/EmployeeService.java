@@ -5,11 +5,13 @@ import app.springbootdemo.database.dbmodel.Employee;
 import app.springbootdemo.database.mapper.EmployeeMapper;
 import app.springbootdemo.database.mapper.HoliDayMapper;
 import app.springbootdemo.database.mapper.IllMapper;
+import app.springbootdemo.database.mapper.TimeOffMapper;
 import app.springbootdemo.database.repository.EmployeeRepository;
 import app.springbootdemo.database.repository.TimeTableRepository;
 import app.springbootdemo.service.model.EmployeeBO;
 import app.springbootdemo.service.model.HoliDayBO;
 import app.springbootdemo.service.model.IllBO;
+import app.springbootdemo.service.model.TimeOffBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,21 @@ public class EmployeeService {
         employeeRepository.save(EmployeeMapper.from(employeeBO));
         return employeeBO;
     }
+
+    public void timeOff(TimeOffBO timeOffBO) {
+
+        long id = timeOffBO.getId();// + "8:00";
+        String leaveType = timeOffBO.getLeaveType();// + "16:00";
+        Date fromDate = timeOffBO.getFromDate();// + "11:30";
+        Date toDate = timeOffBO.getToDate();// + "12:00";
+
+        Employee emp = employeeRepository.findById(Long.valueOf(timeOffBO.getId())).get();
+
+        emp.getTimeOff().add(TimeOffMapper.from(id, leaveType, fromDate, toDate));
+
+        employeeRepository.save(emp);
+    }
+
 
     public void ill(IllBO illBO) {
 

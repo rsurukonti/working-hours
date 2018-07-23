@@ -1,5 +1,8 @@
 package app.springbootdemo.database.dbmodel;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,11 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "timeoff")
 
-    public class TimeOff {
+    public class TimeOff implements Serializable {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,10 +26,14 @@ import java.io.Serializable;
         private String leaveType;
 
         @Column(name = "fromDate")
-        private String fromDate;
+        //@DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
+        @JsonDeserialize(using=StartDateTimeDeserialize.class)
+        private Date fromDate;
 
         @Column(name = "toDate")
-        private String toDate;
+        //@DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
+        @JsonDeserialize(using=EndDateTimeDeserialize.class)
+        private Date toDate;
 
         public long getId() {
             return id;
@@ -43,19 +51,19 @@ import java.io.Serializable;
             this.leaveType = leaveType;
         }
 
-        public String getFromDate() {
+        public Date getFromDate() {
             return fromDate;
         }
 
-        public void setFromDate(String fromDate) {
+        public void setFromDate(Date fromDate) {
             this.fromDate = fromDate;
         }
 
-        public String getToDate() {
+        public Date getToDate() {
             return toDate;
         }
 
-        public void setToDate(String toDate) {
+        public void setToDate(Date toDate) {
             this.toDate = toDate;
         }
 

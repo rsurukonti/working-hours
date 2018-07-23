@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 
 public class BreakDateTimeDeserialize extends JsonDeserializer<String> {
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
     @Override
     public String deserialize(JsonParser paramJsonParser,

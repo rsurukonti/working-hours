@@ -25,14 +25,14 @@ public class Employee implements Serializable {
     @NotBlank
     private String lastName;
 
+    //@OneToMany(cascade=CascadeType.ALL)
+   /// private Set<TimeTable> timeTable = new HashSet<TimeTable>();
+
+   @OneToMany(cascade=CascadeType.ALL)
+   private Set<TimeTable> timeTable = new HashSet<TimeTable>();
+
     @OneToMany(cascade=CascadeType.ALL)
-    private Set<TimeTable> timeTable = new HashSet<TimeTable>();
-
-   // @OneToMany(cascade=CascadeType.ALL)
-   //private Set<TimeTable> timeTable = new HashSet<TimeTable>();
-
-    //@OneToMany
-   // private Set<TimeOff> timeOff;
+    private Set<TimeOff> timeOff = new HashSet<TimeOff>();
 
     public Employee() {
     }
@@ -78,13 +78,13 @@ public class Employee implements Serializable {
 
 
 
-   /* public Set<TimeOff> getTimeOff() {
+   public Set<TimeOff> getTimeOff() {
         return timeOff;
     }
 
     public void setTimeOff(Set<TimeOff> timeOff) {
         this.timeOff = timeOff;
-    }*/
+    }
 
     @Override
     public String toString() {
