@@ -118,4 +118,10 @@ public class EmployeeService {
 
         timeTableRepository.save(lcWorkingDay);
     }
+
+    public Employee findEmployeewithId(long id) {
+
+        Employee employee = employeeRepository.findEmployeewithId(id);
+        return employee;
+    }
 }

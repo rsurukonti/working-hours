@@ -76,4 +76,10 @@ public class EmployeeController {
 	public void endTime(@PathVariable long id) {
 		employeeService.endTime(id);
 	}
+
+	@GetMapping(value="/findbyId/{id}",  produces=MediaType.APPLICATION_JSON_VALUE)
+	public Employee findEmployeewithId(@PathVariable("id") long id) {
+		return employeeService.findEmployeewithId(id);
+	}
+
 }
