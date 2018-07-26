@@ -9,6 +9,8 @@ public class TimeOffBOMapper {
 
         TimeOffBO timeOffBO = new TimeOffBO();
 
+        timeOffBO.setEmpid(timeOffView.getEmpid());
+
         timeOffBO.setId(timeOffView.getId());
         timeOffBO.setLeaveType(timeOffView.getLeaveType());
         timeOffBO.setFromDate(timeOffView.getFromDate());

@@ -28,7 +28,7 @@ public class EmployeeController {
 	EmployeeService employeeService;
 
 	@Autowired
-	EmployeeRepository repository;
+	EmployeeRepository employeerepository;
 
 	@GetMapping(value="/employee",  produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Employee> getAll() {

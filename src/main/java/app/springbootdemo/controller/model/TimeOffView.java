@@ -7,6 +7,9 @@ public class TimeOffView {
     private long id;
 
 
+
+    private long empid;
+
     private String leaveType;
 
 
@@ -20,6 +23,14 @@ public class TimeOffView {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getEmpid() {
+        return empid;
+    }
+
+    public void setEmpid(long empid) {
+        this.empid = empid;
     }
 
     public String getLeaveType() {
@@ -45,4 +56,6 @@ public class TimeOffView {
     public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
+
+
 }

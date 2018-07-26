@@ -2,6 +2,7 @@ package app.springbootdemo.database.dbmodel;
 
 
 import javax.persistence.*;
+import javax.swing.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -78,7 +79,7 @@ public class Employee implements Serializable {
 
 
 
-   public Set<TimeOff> getTimeOff() {
+  public Set<TimeOff> getTimeOff() {
         return timeOff;
     }
 
@@ -90,4 +91,5 @@ public class Employee implements Serializable {
     public String toString() {
         return String.format("Employee[id=%d, firstName='%s', lastName='%s']", id, firstName, lastName);
     }
+
 }

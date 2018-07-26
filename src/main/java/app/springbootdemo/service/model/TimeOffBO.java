@@ -5,6 +5,7 @@ import java.util.Date;
 public class TimeOffBO {
 
     private long id;
+    private long empid;
     private String leaveType;
     private Date fromDate;
     private Date toDate;
@@ -18,6 +19,13 @@ public class TimeOffBO {
         this.id = id;
     }
 
+    public long getEmpid() {
+        return empid;
+    }
+
+    public void setEmpid(long empid) {
+        this.empid = empid;
+    }
 
     public String getLeaveType() {
         return leaveType;

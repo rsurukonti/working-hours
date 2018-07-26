@@ -9,8 +9,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "WORKING_CALENDAR")
-@DiscriminatorValue("W")
+@Table(name = "Time_Table")
+@DiscriminatorValue("T")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="timeType",
         discriminatorType=DiscriminatorType.STRING)

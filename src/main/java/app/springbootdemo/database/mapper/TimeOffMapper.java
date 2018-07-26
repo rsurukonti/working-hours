@@ -6,8 +6,9 @@ import java.util.Date;
 
 public class TimeOffMapper {
 
-    public static TimeOff from (long id, String leaveType, Date fromDate, Date toDate) {
+    public static TimeOff from (long eid, long id, String leaveType, Date fromDate, Date toDate) {
         TimeOff timeOff = new TimeOff();
+        timeOff.setId(id);
         timeOff.setId(id);
         timeOff.setLeaveType(leaveType);
         timeOff.setFromDate(fromDate);

@@ -15,8 +15,13 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long>
  // query builder mechanism and which trips the prefixes..findBy, readBy, queryBy..from the method and starts parsing the rest 
 {
 
-	@Query(value = "select u from Employee u where u.id=?1",name = "findEmployeewithId")
-	public Employee findEmployeewithId(long id);
+	@Query(value = "select u from Employee u where u.id=?3",name = "findEmployeewithId")
+     public Employee findEmployeewithId(long id);
+
+
+	@Query(value = "select u from Employee u",name = "findEmployeewithId")
+	public Employee findAllEmployee();
+
 
 	List<Employee> findByLastName(String lastName);
 

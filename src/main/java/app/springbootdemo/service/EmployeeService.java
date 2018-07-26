@@ -16,7 +16,10 @@ import app.springbootdemo.service.model.TimeOffBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -43,18 +46,28 @@ public class EmployeeService {
 
     public void timeOff(TimeOffBO timeOffBO) {
 
+        long empid = timeOffBO.getEmpid();// + "8:00";
         long id = timeOffBO.getId();// + "8:00";
         String leaveType = timeOffBO.getLeaveType();// + "16:00";
         Date fromDate = timeOffBO.getFromDate();// + "11:30";
         Date toDate = timeOffBO.getToDate();// + "12:00";
 
-        Employee emp = employeeRepository.findById(Long.valueOf(timeOffBO.getId())).get();
+       Employee emp = employeeRepository.findById(Long.valueOf(timeOffBO.getId())).get();
+       emp.getTimeOff().add(TimeOffMapper.from(empid, id, leaveType, fromDate, toDate));
+       employeeRepository.save(emp);
 
-        emp.getTimeOff().add(TimeOffMapper.from(id, leaveType, fromDate, toDate));
 
-        employeeRepository.save(emp);
+
+
+
+
+
+    // TimeOffMapper.from(empid, id, leaveType, fromDate, toDate);
+
+        //emp.getTimeOff().add(TimeOffMapper.from(empid, id, leaveType, fromDate, toDate));
+       // employeeRepository.save(emp);
+
     }
-
 
     public void ill(IllBO illBO) {
 
@@ -74,19 +87,22 @@ public class EmployeeService {
 
     public void holiDay(HoliDayBO holiDayBO) {
 
-        Date startTime = holiDayBO.getFromDate();// + "8:00";
+        Date startTime = holiDayBO.getFromDate();
+        //Calendar.set(Calendar.HOUR_OF_DAY, int hours);
+        startTime.setHours(Calendar.HOUR_OF_DAY);
         Date endTime = holiDayBO.getToDate();// + "16:00";
-        Date begin_Break = holiDayBO.getFromDate();// + "11:30";
-        Date end_Break = holiDayBO.getToDate();// + "12:00";
+        Date begin_Break = null;
+        Date end_Break = null;
 
 
+        for (LocalDate date = holiDayBO.getFromDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); date.isBefore(holiDayBO.getToDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()); date = date.plusDays(1))
+        {
+            Employee emp = employeeRepository.findById(Long.valueOf(holiDayBO.getId())).get();
 
+            emp.getTimeTable().add(HoliDayMapper.from(startTime, begin_Break,null,null));
 
-        Employee emp = employeeRepository.findById(Long.valueOf(holiDayBO.getId())).get();
+            employeeRepository.save(emp);        }
 
-        emp.getTimeTable().add(HoliDayMapper.from(startTime, begin_Break, end_Break, endTime));
-
-        employeeRepository.save(emp);
     }
     public List<Employee> findByLastName(String lastName) {
 
@@ -122,6 +138,7 @@ public class EmployeeService {
     public Employee findEmployeewithId(long id) {
 
         Employee employee = employeeRepository.findEmployeewithId(id);
+
         return employee;
     }
 }

@@ -17,55 +17,70 @@ import java.util.Date;
 
     public class TimeOff implements Serializable {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "timeoff_id")
-        private long id;
 
-        @Column(name = "leavetype")
-        private String leaveType;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "timeoff_id")
+    private long id;
 
-        @Column(name = "fromDate")
-        //@DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
-        @JsonDeserialize(using=StartDateTimeDeserialize.class)
-        private Date fromDate;
 
-        @Column(name = "toDate")
-        //@DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
-        @JsonDeserialize(using=EndDateTimeDeserialize.class)
-        private Date toDate;
+    //@Id
+    // @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "emp_id")
+    private long eid;
 
-        public long getId() {
-            return id;
-        }
+    @Column(name = "leavetype")
+    private String leaveType;
 
-        public void setId(long id) {
-            this.id = id;
-        }
+    @Column(name = "fromDate")
+    //@DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
+    @JsonDeserialize(using = StartDateTimeDeserialize.class)
+    private Date fromDate;
 
-        public String getLeaveType() {
-            return leaveType;
-        }
+    @Column(name = "toDate")
+    //@DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
+    @JsonDeserialize(using = EndDateTimeDeserialize.class)
+    private Date toDate;
 
-        public void setLeaveType(String leaveType) {
-            this.leaveType = leaveType;
-        }
+    public long getId() {
+        return id;
+    }
 
-        public Date getFromDate() {
-            return fromDate;
-        }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-        public void setFromDate(Date fromDate) {
-            this.fromDate = fromDate;
-        }
+    public long getEid() {
+        return eid;
+    }
 
-        public Date getToDate() {
-            return toDate;
-        }
+    public void setEid(long eid) {
+        this.eid = eid;
+    }
 
-        public void setToDate(Date toDate) {
-            this.toDate = toDate;
-        }
+    public String getLeaveType() {
+        return leaveType;
+    }
 
-        }
+    public void setLeaveType(String leaveType) {
+        this.leaveType = leaveType;
+    }
+
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
+}
 
