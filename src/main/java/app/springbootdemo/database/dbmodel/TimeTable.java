@@ -10,19 +10,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "Time_Table")
-@DiscriminatorValue("T")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="timeType",
         discriminatorType=DiscriminatorType.STRING)
 
-public class TimeTable implements Serializable {
+public class TimeTable {
 
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
-
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,7 +23,7 @@ public class TimeTable implements Serializable {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "employee", nullable = false)
     private Employee employee;
 
     @Column(name = "Start_Time")

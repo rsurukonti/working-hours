@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "employee")
-public class Employee implements Serializable {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,8 +27,8 @@ public class Employee implements Serializable {
     private String lastName;
 
 
-   @OneToMany(cascade=CascadeType.ALL)
-   private Set<TimeTable> timeTable = new HashSet<TimeTable>();
+   @OneToMany(mappedBy = "employee",cascade=CascadeType.ALL)
+   private Set<TimeTable> timeTable;
 
 
     public void setId(long id) {
