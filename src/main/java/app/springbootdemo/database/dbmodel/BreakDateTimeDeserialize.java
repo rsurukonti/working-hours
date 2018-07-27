@@ -15,13 +15,25 @@ import org.springframework.validation.DefaultMessageCodesResolver;
 
 public class BreakDateTimeDeserialize extends JsonDeserializer<String> {
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.GERMANY);
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
     //SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     //String output = DefaultMessageCodesResolver.Format.toDelimitedString(String.valueOf(DateTimeFormatter.ISO_LOCAL_DATE_TIME)).replace( "T" , " " );
     @Override
     public String deserialize(JsonParser paramJsonParser,
                               DeserializationContext paramDeserializationContext)
-            throws IOException, JsonProcessingException {
+         //   throws IOException, JsonProcessingException {
+
+
+    throws IOException, JsonProcessingException{
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+
+
+        String date = "27-07-2018 08:30:00";
+        return "sdf.parse(date)";
+    }
+      /*
+
         String str = paramJsonParser.getText().trim();
         String currentTime = null;
         try {
@@ -30,5 +42,5 @@ public class BreakDateTimeDeserialize extends JsonDeserializer<String> {
             // Handle exception here
         }
         return currentTime;
-    }
+    }*/
 }

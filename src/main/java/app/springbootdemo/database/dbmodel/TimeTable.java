@@ -22,14 +22,16 @@ public class TimeTable implements Serializable {
         return serialVersionUID;
     }
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", nullable = false)
+    private Employee employee;
 
     @Column(name = "Start_Time")
     //@DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
@@ -92,7 +94,24 @@ public class TimeTable implements Serializable {
         this.end = end;
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
 
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
+    public TimeTable(Employee employee, Date begin, Date begin_break, Date end_break, Date end) {
+        this.employee = employee;
+        this.begin = begin;
+        this.begin_break = begin_break;
+        this.end_break = end_break;
+        this.end = end;
+    }
 
+    public TimeTable() {
+    }
 }
+
+

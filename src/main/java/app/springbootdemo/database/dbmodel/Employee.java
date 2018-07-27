@@ -15,32 +15,21 @@ public class Employee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="emp_id")
+    @Column
     private long id;
 
-    @Column(name = "firstname")
+    @Column
     @NotBlank
     private String firstName;
 
-    @Column(name = "lastname")
+    @Column
     @NotBlank
     private String lastName;
 
-    //@OneToMany(cascade=CascadeType.ALL)
-   /// private Set<TimeTable> timeTable = new HashSet<TimeTable>();
 
    @OneToMany(cascade=CascadeType.ALL)
    private Set<TimeTable> timeTable = new HashSet<TimeTable>();
 
-    @OneToMany(cascade=CascadeType.ALL)
-    private Set<TimeOff> timeOff = new HashSet<TimeOff>();
-
-    public Employee() {
-    }
-
-    public long getId() {
-        return id;
-    }
 
     public void setId(long id) {
         this.id = id;
@@ -76,15 +65,17 @@ public class Employee implements Serializable {
         this.timeTable = timeTable;
     }
 
-
-
-
-  public Set<TimeOff> getTimeOff() {
-        return timeOff;
+    public long getId() {
+        return id;
     }
 
-    public void setTimeOff(Set<TimeOff> timeOff) {
-        this.timeOff = timeOff;
+    public Employee(@NotBlank String firstName, @NotBlank String lastName, Set<TimeTable> timeTable) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.timeTable = timeTable;
+    }
+
+    public Employee() {
     }
 
     @Override

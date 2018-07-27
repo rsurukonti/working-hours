@@ -6,7 +6,6 @@ import app.springbootdemo.database.dbmodel.TimeTable;
 import app.springbootdemo.database.mapper.EmployeeMapper;
 import app.springbootdemo.database.mapper.HoliDayMapper;
 import app.springbootdemo.database.mapper.IllMapper;
-import app.springbootdemo.database.mapper.TimeOffMapper;
 import app.springbootdemo.database.repository.EmployeeRepository;
 import app.springbootdemo.database.repository.TimeTableRepository;
 import app.springbootdemo.service.model.EmployeeBO;
@@ -44,30 +43,6 @@ public class EmployeeService {
         return employeeBO;
     }
 
-    public void timeOff(TimeOffBO timeOffBO) {
-
-        long empid = timeOffBO.getEmpid();// + "8:00";
-        long id = timeOffBO.getId();// + "8:00";
-        String leaveType = timeOffBO.getLeaveType();// + "16:00";
-        Date fromDate = timeOffBO.getFromDate();// + "11:30";
-        Date toDate = timeOffBO.getToDate();// + "12:00";
-
-       Employee emp = employeeRepository.findById(Long.valueOf(timeOffBO.getId())).get();
-       emp.getTimeOff().add(TimeOffMapper.from(empid, id, leaveType, fromDate, toDate));
-       employeeRepository.save(emp);
-
-
-
-
-
-
-
-    // TimeOffMapper.from(empid, id, leaveType, fromDate, toDate);
-
-        //emp.getTimeOff().add(TimeOffMapper.from(empid, id, leaveType, fromDate, toDate));
-       // employeeRepository.save(emp);
-
-    }
 
     public void ill(IllBO illBO) {
 
@@ -116,9 +91,13 @@ public class EmployeeService {
     }
 
     public void startTime(long pEmployeeId){
+
+
         Employee emp = employeeRepository.findById(pEmployeeId).get();
-        TimeTable lcWorkingDay = (TimeTable) (emp.getTimeTable().toArray())[0];
+        TimeTable lcWorkingDay = new TimeTable();
         lcWorkingDay.setBegin(new Date());
+        emp.getTimeTable().add(lcWorkingDay);
+        timeTableRepository.save(lcWorkingDay);
 
         timeTableRepository.save(lcWorkingDay);
     }
@@ -135,10 +114,10 @@ public class EmployeeService {
         timeTableRepository.save(lcWorkingDay);
     }
 
-    public Employee findEmployeewithId(long id) {
+   /* public Employee findEmployeewithId(long id) {
 
         Employee employee = employeeRepository.findEmployeewithId(id);
 
         return employee;
-    }
+    }*/
 }

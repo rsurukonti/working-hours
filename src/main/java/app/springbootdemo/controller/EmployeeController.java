@@ -7,7 +7,6 @@ import app.springbootdemo.controller.model.HoliDayView;
 import app.springbootdemo.controller.model.IllView;
 import app.springbootdemo.controller.model.TimeOffView;
 import app.springbootdemo.database.dbmodel.Employee;
-import app.springbootdemo.database.dbmodel.TimeOff;
 import app.springbootdemo.database.repository.EmployeeRepository;
 import app.springbootdemo.service.EmployeeService;
 import app.springbootdemo.service.mapper.EmployeeBOMapper;
@@ -40,10 +39,6 @@ public class EmployeeController {
 		return EmployeeViewMapper.from(employeeService.postEmployee(EmployeeBOMapper.from(employeeView)));
 	}
 
-	@PostMapping(value="/timeoff" ,consumes=MediaType.APPLICATION_JSON_VALUE)
-	public void timeOff(@RequestBody TimeOffView timeOffView) {
-		employeeService.timeOff(TimeOffBOMapper.from(timeOffView));
-	}
 
 	@PostMapping(value="/ill" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void ill(@RequestBody IllView illView) {
@@ -77,9 +72,9 @@ public class EmployeeController {
 		employeeService.endTime(id);
 	}
 
-	@GetMapping(value="/findbyId/{id}",  produces=MediaType.APPLICATION_JSON_VALUE)
+	/*@GetMapping(value="/findbyId/{id}",  produces=MediaType.APPLICATION_JSON_VALUE)
 	public Employee findEmployeewithId(@PathVariable("id") long id) {
 		return employeeService.findEmployeewithId(id);
-	}
+	}*/
 
 }
