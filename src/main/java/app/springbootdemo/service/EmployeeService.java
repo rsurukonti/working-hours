@@ -104,6 +104,18 @@ public class EmployeeService {
 
     public void endTime(long pEmployeeId){
         Employee emp = employeeRepository.findById(pEmployeeId).get();
+        TimeTable lcWorkingDay = new TimeTable();
+        lcWorkingDay.setId(emp.getId());
+        lcWorkingDay.setEmployee(emp);
+        lcWorkingDay.setEnd(new Date());
+        emp.getTimeTable().add(lcWorkingDay);
+
+        employeeRepository.save(emp);
+    }
+
+
+   /* public void endTime(long pEmployeeId){
+        Employee emp = employeeRepository.findById(pEmployeeId).get();
         TimeTable lcWorkingDay = (TimeTable) (emp.getTimeTable().toArray())[0];
         lcWorkingDay.setEnd(new Date());
 
@@ -112,7 +124,7 @@ public class EmployeeService {
         newdate.setMonth(11);
 
         timeTableRepository.save(lcWorkingDay);
-    }
+    }*/
 
    /* public Employee findEmployeewithId(long id) {
 

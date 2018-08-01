@@ -27,8 +27,8 @@ public class Employee {
     private String lastName;
 
 
-   @OneToMany(mappedBy = "employee",cascade=CascadeType.ALL)
-   private Set<TimeTable> timeTable;
+    @OneToMany(mappedBy = "employee",cascade=CascadeType.ALL)
+    private Set<TimeTable> timeTable;
 
 
     public void setId(long id) {

@@ -19,7 +19,7 @@ public class TimeTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,11 +45,11 @@ public class TimeTable {
     private Date end;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
