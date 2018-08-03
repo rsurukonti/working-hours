@@ -7,7 +7,7 @@ public class TimeTableBO {
 
     private static final long serialVersionUID = 1L;
 
-    private int id;
+    private long id;
 
     private Date begin;
 
@@ -22,11 +22,11 @@ public class TimeTableBO {
         return serialVersionUID;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

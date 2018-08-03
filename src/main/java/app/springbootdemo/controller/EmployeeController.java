@@ -13,6 +13,7 @@ import app.springbootdemo.service.mapper.EmployeeBOMapper;
 import app.springbootdemo.service.mapper.HoliDayBOMapper;
 import app.springbootdemo.service.mapper.IllBOMapper;
 import app.springbootdemo.service.mapper.TimeOffBOMapper;
+import app.springbootdemo.service.model.EmployeeBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,6 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 
-	@Autowired
-	EmployeeRepository employeerepository;
 
 	@GetMapping(value="/employee",  produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Employee> getAll() {
@@ -36,7 +35,12 @@ public class EmployeeController {
 
 	@PostMapping(value="/postemployee" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public EmployeeView postEmployee(@RequestBody EmployeeView employeeView) {
-		return EmployeeViewMapper.from(employeeService.postEmployee(EmployeeBOMapper.from(employeeView)));
+		EmployeeBO employeeBO = EmployeeBOMapper.from(employeeView);
+		employeeBO = employeeService.postEmployee(employeeBO);
+
+		EmployeeView employeeView1 =EmployeeViewMapper.from(employeeBO);
+
+		return employeeView1;
 	}
 
 
@@ -88,4 +92,25 @@ public class EmployeeController {
 		return employeeService.findEmployeewithId(id);
 	}*/
 
+
+	@PostMapping(value="/employee/illStartTime/{id}" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void illStartTime(@PathVariable long id) {
+		employeeService.illStartTime(id);
+	}
+
+	@PostMapping(value="/employee/illEndTime/{id}" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void illEndTime(@PathVariable long id) {
+		employeeService.illEndTime(id);
+	}
+
+
+	@PostMapping(value="/employee/holidayStartTime/{id}" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void holidayStartTime(@PathVariable long id) {
+		employeeService.holidayStartTime(id);
+	}
+
+	@PostMapping(value="/employee/holidayEndTime/{id}" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void holidayEndTime(@PathVariable long id) {
+		employeeService.holidayEndTime(id);
+	}
 }

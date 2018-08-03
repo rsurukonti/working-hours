@@ -2,12 +2,15 @@ package app.springbootdemo.service;
 
 
 import app.springbootdemo.database.dbmodel.Employee;
+import app.springbootdemo.database.dbmodel.HoliDay;
+import app.springbootdemo.database.dbmodel.Ill;
 import app.springbootdemo.database.dbmodel.TimeTable;
 import app.springbootdemo.database.mapper.EmployeeMapper;
 import app.springbootdemo.database.mapper.HoliDayMapper;
 import app.springbootdemo.database.mapper.IllMapper;
 import app.springbootdemo.database.repository.EmployeeRepository;
 import app.springbootdemo.database.repository.TimeTableRepository;
+import app.springbootdemo.service.mapper.EmployeeBOMapper;
 import app.springbootdemo.service.model.EmployeeBO;
 import app.springbootdemo.service.model.HoliDayBO;
 import app.springbootdemo.service.model.IllBO;
@@ -39,8 +42,8 @@ public class EmployeeService {
     }
 
     public EmployeeBO postEmployee(EmployeeBO employeeBO) {
-        employeeRepository.save(EmployeeMapper.from(employeeBO));
-        return employeeBO;
+        EmployeeBO employeeBO1 = EmployeeBOMapper.from(employeeRepository.save(EmployeeMapper.from(employeeBO)));
+        return employeeBO1;
     }
 
 
@@ -157,4 +160,49 @@ public class EmployeeService {
 
         return employee;
     }*/
+
+
+    public void illStartTime(long pEmployeeId) {
+
+        Employee emp = employeeRepository.findById(pEmployeeId).get();
+        Ill lcWorkingDay = new Ill();
+        lcWorkingDay.setId(emp.getId());
+        lcWorkingDay.setEmployee(emp);
+        lcWorkingDay.setBegin(new Date());
+        emp.getTimeTable().add(lcWorkingDay);
+        employeeRepository.save(emp);
+    }
+
+    public void illEndTime(long pEmployeeId) {
+
+        Employee emp = employeeRepository.findById(pEmployeeId).get();
+        Ill lcWorkingDay = new Ill();
+        lcWorkingDay.setId(emp.getId());
+        lcWorkingDay.setEmployee(emp);
+        lcWorkingDay.setEnd(new Date());
+        emp.getTimeTable().add(lcWorkingDay);
+        employeeRepository.save(emp);
+    }
+
+    public void holidayStartTime(long pEmployeeId) {
+
+        Employee emp = employeeRepository.findById(pEmployeeId).get();
+        HoliDay lcWorkingDay = new HoliDay();
+        lcWorkingDay.setId(emp.getId());
+        lcWorkingDay.setEmployee(emp);
+        lcWorkingDay.setBegin(new Date());
+        emp.getTimeTable().add(lcWorkingDay);
+        employeeRepository.save(emp);
+    }
+
+    public void holidayEndTime(long pEmployeeId) {
+
+        Employee emp = employeeRepository.findById(pEmployeeId).get();
+        HoliDay lcWorkingDay = new HoliDay();
+        lcWorkingDay.setId(emp.getId());
+        lcWorkingDay.setEmployee(emp);
+        lcWorkingDay.setEnd(new Date());
+        emp.getTimeTable().add(lcWorkingDay);
+        employeeRepository.save(emp);
+    }
 }
