@@ -95,24 +95,49 @@ public class EmployeeService {
 
         Employee emp = employeeRepository.findById(pEmployeeId).get();
         TimeTable lcWorkingDay = new TimeTable();
+        lcWorkingDay.setId(emp.getId()); //new
+        lcWorkingDay.setEmployee(emp);   //new
         lcWorkingDay.setBegin(new Date());
         emp.getTimeTable().add(lcWorkingDay);
-        timeTableRepository.save(lcWorkingDay);
+        employeeRepository.save(emp);   //timetablerepository    save 1cworkingday
 
-        timeTableRepository.save(lcWorkingDay);
+
     }
 
     public void endTime(long pEmployeeId){
+
         Employee emp = employeeRepository.findById(pEmployeeId).get();
         TimeTable lcWorkingDay = new TimeTable();
         lcWorkingDay.setId(emp.getId());
         lcWorkingDay.setEmployee(emp);
         lcWorkingDay.setEnd(new Date());
         emp.getTimeTable().add(lcWorkingDay);
-
         employeeRepository.save(emp);
     }
 
+
+
+    public void startBreakTime(long pEmployeeId) {
+
+        Employee emp = employeeRepository.findById(pEmployeeId).get();
+        TimeTable lcWorkingDay = new TimeTable();
+        lcWorkingDay.setId(emp.getId());
+        lcWorkingDay.setEmployee(emp);
+        lcWorkingDay.setBegin_break(new Date());
+        emp.getTimeTable().add(lcWorkingDay);
+        employeeRepository.save(emp);
+    }
+
+    public void stopBreakTime(long pEmployeeId) {
+
+        Employee emp = employeeRepository.findById(pEmployeeId).get();
+        TimeTable lcWorkingDay = new TimeTable();
+        lcWorkingDay.setId(emp.getId());
+        lcWorkingDay.setEmployee(emp);
+        lcWorkingDay.setEnd_break(new Date());
+        emp.getTimeTable().add(lcWorkingDay);
+        employeeRepository.save(emp);
+    }
 
    /* public void endTime(long pEmployeeId){
         Employee emp = employeeRepository.findById(pEmployeeId).get();

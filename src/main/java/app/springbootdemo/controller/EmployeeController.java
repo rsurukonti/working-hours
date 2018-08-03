@@ -72,6 +72,17 @@ public class EmployeeController {
 		employeeService.endTime(id);
 	}
 
+	@PostMapping(value="/employee/startBreakTime/{id}" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void startBreakTime(@PathVariable long id) {
+		employeeService.startBreakTime(id);
+	}
+
+
+	@PostMapping(value="/employee/stopBreakTime/{id}" ,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void endBreakTime(@PathVariable long id) {
+		employeeService.stopBreakTime(id);
+	}
+
 	/*@GetMapping(value="/findbyId/{id}",  produces=MediaType.APPLICATION_JSON_VALUE)
 	public Employee findEmployeewithId(@PathVariable("id") long id) {
 		return employeeService.findEmployeewithId(id);
