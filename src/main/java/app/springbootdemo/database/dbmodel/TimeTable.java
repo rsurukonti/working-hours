@@ -23,7 +23,7 @@ public class TimeTable {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee", nullable = false)
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
     @Column(name = "Start_Time")
