@@ -11,27 +11,27 @@ public class EmployeeBOMapper {
 
     public static EmployeeBO from(EmployeeView employeeView) {
 
-        EmployeeBO empBo = new EmployeeBO();
+        EmployeeBO empBO = new EmployeeBO();
 
-        empBo.setFirstName(employeeView.getFirstName());
-        empBo.setLastName(employeeView.getLastName());
-        empBo.setId(employeeView.getId());
-        empBo.setTimeTable(employeeView.getTimeTable().stream().map(TimeTableBOMapper::from).collect(Collectors.toSet()));
+        empBO.setFirstName(employeeView.getFirstName());
+        empBO.setLastName(employeeView.getLastName());
+        empBO.setId(employeeView.getId());
+        empBO.setTimeTable(employeeView.getTimeTable().stream().map(TimeTableBOMapper::from).collect(Collectors.toSet()));
 
-        return empBo;
+        return empBO;
 
     }
 
     public static EmployeeBO from(Employee employee) {
 
-        EmployeeBO empBo = new EmployeeBO();
+        EmployeeBO empBO = new EmployeeBO();
 
-        empBo.setFirstName(employee.getFirstName());
-        empBo.setLastName(employee.getLastName());
-        empBo.setId(employee.getId());
-        empBo.setTimeTable(employee.getTimeTable().stream().map(TimeTableBOMapper::from).collect(Collectors.toSet()));
+        empBO.setFirstName(employee.getFirstName());
+        empBO.setLastName(employee.getLastName());
+        empBO.setId(employee.getId());
+        empBO.setTimeTable(employee.getTimeTable().stream().map(TimeTableBOMapper::from).collect(Collectors.toSet()));
 
-        return empBo;
+        return empBO;
 
     }
 }

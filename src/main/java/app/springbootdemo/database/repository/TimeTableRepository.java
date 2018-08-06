@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -16,6 +18,10 @@ public interface TimeTableRepository extends CrudRepository<TimeTable, Long> {
    //Set<TimeTable> getTimeTableByEmployee(@Param("employeeId") long employeeId);
 
    // @Query(value = "select u from Employee u where u.id=?3",name = "findEmployeewithId")
-   // public Employee findEmployeewithId(long id);
+   //
+    //public Employee findEmployeewithId(long id);
+
+   @Query("select t from TimeTable t join t.employee e where e.id = :empId and  t.end IS NULL")
+    public Set<TimeTable> findForCurrentTimeTableForEmployee(@Param("empId") Long empId);
 
 }

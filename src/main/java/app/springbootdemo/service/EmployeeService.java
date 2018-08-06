@@ -18,12 +18,10 @@ import app.springbootdemo.service.model.TimeOffBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class EmployeeService {
@@ -98,7 +96,7 @@ public class EmployeeService {
 
         Employee emp = employeeRepository.findById(pEmployeeId).get();
         TimeTable lcWorkingDay = new TimeTable();
-        lcWorkingDay.setId(emp.getId()); //new
+       // lcWorkingDay.setId(emp.getId()); //new
         lcWorkingDay.setEmployee(emp);   //new
         lcWorkingDay.setBegin(new Date());
         emp.getTimeTable().add(lcWorkingDay);
@@ -110,12 +108,14 @@ public class EmployeeService {
     public void endTime(long pEmployeeId){
 
         Employee emp = employeeRepository.findById(pEmployeeId).get();
-        TimeTable lcWorkingDay = new TimeTable();
-        lcWorkingDay.setId(emp.getId());
-        lcWorkingDay.setEmployee(emp);
-        lcWorkingDay.setEnd(new Date());
-        emp.getTimeTable().add(lcWorkingDay);
-        employeeRepository.save(emp);
+        Optional<TimeTable> currentTimeTableOptional = timeTableRepository.findForCurrentTimeTableForEmployee(emp.getId()).stream().findFirst();
+        if (currentTimeTableOptional.isPresent()) {
+            TimeTable currentTimeTable = currentTimeTableOptional.get();
+            currentTimeTable.setEnd(new Date());
+            timeTableRepository.save(currentTimeTable);
+        }
+
+
     }
 
 
