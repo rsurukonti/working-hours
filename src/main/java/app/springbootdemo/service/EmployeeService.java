@@ -32,6 +32,7 @@ public class EmployeeService {
     @Autowired
     TimeTableRepository timeTableRepository;
 
+
     public List<Employee> getAll() {
         List<Employee> list = new ArrayList<>();
         Iterable<Employee> employees = employeeRepository.findAll();
@@ -47,25 +48,41 @@ public class EmployeeService {
 
     public void ill(IllBO illBO) {
 
-        Date startTime = illBO.getIllDate();// + "8:00";
-        Date endTime = illBO.getIllDate();// + "16:00";
-        Date begin_Break = illBO.getIllDate();// + "12:00";
-        Date end_Break = illBO.getIllDate();// + "12:30";
+        Date startDate = illBO.getIllFromDate();// + "8:00";
+        Date endDate = illBO.getIllToDate();// + "16:00";
 
 
-        Employee emp = employeeRepository.findById(Long.valueOf(illBO.getEmpId())).get();
+        Employee emp = employeeRepository.findById((illBO.getEmpId())).get();
 
-        emp.getTimeTable().add(IllMapper.from(startTime, begin_Break, end_Break, endTime));
+        System.out.println(emp.getFirstName());
+        System.out.println(emp.getId());
 
-        employeeRepository.save(emp);
+
+
+        //emp.getTimeTable().add(IllMapper.from(startTime, endTime, begin_Break, end_Break));
+
+        TimeTable timeTable = new TimeTable();
+        timeTable.setEmployee(emp);
+        timeTable.setBegin(startDate);
+        timeTable.setEnd(endDate);
+        timeTable.setBegin_break(null);
+        timeTable.setEnd_break(null);
+
+        //System.out.println("/////////////////////////////////////////   " + timeTable.getEmployee().getId());
+
+        emp.getTimeTable().add(timeTable);
+//        emp.setTimeTable(IllMapper.from(startTime, endTime, begin_Break, end_Break));
+//        employeeRepository.save(emp);
+
+        timeTableRepository.save(timeTable);
     }
 
 
     public void holiDay(HoliDayBO holiDayBO) {
 
-        Date startTime = holiDayBO.getFromDate();
+        /*Date startTime = holiDayBO.getFromDate();
         //Calendar.set(Calendar.HOUR_OF_DAY, int hours);
-        startTime.setHours(Calendar.HOUR_OF_DAY);
+        //startTime.setHours(Calendar.HOUR_OF_DAY);
         Date endTime = holiDayBO.getToDate();// + "16:00";
         Date begin_Break = null;
         Date end_Break = null;
@@ -73,26 +90,50 @@ public class EmployeeService {
 
         for (LocalDate date = holiDayBO.getFromDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); date.isBefore(holiDayBO.getToDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()); date = date.plusDays(1))
         {
-            Employee emp = employeeRepository.findById(Long.valueOf(holiDayBO.getId())).get();
+            Employee emp = employeeRepository.findById((holiDayBO.getId())).get();
 
             emp.getTimeTable().add(HoliDayMapper.from(startTime, begin_Break,null,null));
 
-            employeeRepository.save(emp);        }
+            employeeRepository.save(emp);
+        }*/
 
-    }
+
+        Date startDate = holiDayBO.getFromDate();
+        Date endDate = holiDayBO.getToDate();// + "16:00";
+
+        Date begin_Break = null;
+        Date end_Break = null;
+
+
+        Employee emp = employeeRepository.findById((holiDayBO.getId())).get();
+
+        TimeTable timeTable = new TimeTable();
+        timeTable.setEmployee(emp);
+        timeTable.setBegin(startDate);
+        timeTable.setEnd(endDate);
+        timeTable.setBegin_break(null);
+        timeTable.setEnd_break(null);
+
+        emp.getTimeTable().add(timeTable);
+
+        timeTableRepository.save(timeTable);
+
+
+        }
+
+
     public List<Employee> findByLastName(String lastName) {
-
         List<Employee> employee = employeeRepository.findByLastName(lastName);
         return employee;
     }
 
-    public void deleteEmployee(long id){
 
+    public void deleteEmployee(long id){
         employeeRepository.deleteById(id);
     }
 
-    public void startTime(long pEmployeeId){
 
+    public void startTime(long pEmployeeId){
 
         Employee emp = employeeRepository.findById(pEmployeeId).get();
         TimeTable lcWorkingDay = new TimeTable();
@@ -100,12 +141,13 @@ public class EmployeeService {
         lcWorkingDay.setEmployee(emp);   //new
         lcWorkingDay.setBegin(new Date());
         emp.getTimeTable().add(lcWorkingDay);
-        employeeRepository.save(emp);   //timetablerepository    save 1cworkingday
+        timeTableRepository.save(lcWorkingDay);   //timetablerepository    save 1cworkingday
 
 
     }
 
-    public void endTime(long pEmployeeId){
+
+    public void endTime(long pEmployeeId) {
 
         Employee emp = employeeRepository.findById(pEmployeeId).get();
         Optional<TimeTable> currentTimeTableOptional = timeTableRepository.findForCurrentTimeTableForEmployee(emp.getId()).stream().findFirst();
@@ -115,32 +157,39 @@ public class EmployeeService {
             timeTableRepository.save(currentTimeTable);
         }
 
-
-    }
-
+        }
 
 
     public void startBreakTime(long pEmployeeId) {
 
         Employee emp = employeeRepository.findById(pEmployeeId).get();
-        TimeTable lcWorkingDay = new TimeTable();
-        lcWorkingDay.setId(emp.getId());
-        lcWorkingDay.setEmployee(emp);
-        lcWorkingDay.setBegin_break(new Date());
-        emp.getTimeTable().add(lcWorkingDay);
-        employeeRepository.save(emp);
+        Optional<TimeTable> currentTimeTableOptional = timeTableRepository.currentTimeTableForEmployee1(emp.getId()).stream().findFirst();
+        if (currentTimeTableOptional.isPresent()) {
+            TimeTable currentTimeTable = currentTimeTableOptional.get();
+            currentTimeTable.setBegin_break(new Date());
+            timeTableRepository.save(currentTimeTable);
+        }
     }
 
-    public void stopBreakTime(long pEmployeeId) {
 
-        Employee emp = employeeRepository.findById(pEmployeeId).get();
-        TimeTable lcWorkingDay = new TimeTable();
+
+        public void stopBreakTime(long pEmployeeId){
+        Employee employee = employeeRepository.findById(pEmployeeId).get();
+        Optional<TimeTable> currentTimeTableOptional = timeTableRepository.currentTimeTableForEmployee2(employee.getId()).stream().findFirst();
+        if (currentTimeTableOptional.isPresent()) {
+            TimeTable currentTimeTable = currentTimeTableOptional.get();
+            currentTimeTable.setEnd_break(new Date());
+            timeTableRepository.save(currentTimeTable);
+
+
+
+        /*TimeTable lcWorkingDay = new TimeTable();
         lcWorkingDay.setId(emp.getId());
         lcWorkingDay.setEmployee(emp);
         lcWorkingDay.setEnd_break(new Date());
         emp.getTimeTable().add(lcWorkingDay);
-        employeeRepository.save(emp);
-    }
+        employeeRepository.save(emp);*/
+
 
    /* public void endTime(long pEmployeeId){
         Employee emp = employeeRepository.findById(pEmployeeId).get();
@@ -162,7 +211,7 @@ public class EmployeeService {
     }*/
 
 
-    public void illStartTime(long pEmployeeId) {
+  /*  public void illStartTime(long pEmployeeId) {
 
         Employee emp = employeeRepository.findById(pEmployeeId).get();
         Ill lcWorkingDay = new Ill();
@@ -183,26 +232,6 @@ public class EmployeeService {
         emp.getTimeTable().add(lcWorkingDay);
         employeeRepository.save(emp);
     }
-
-    public void holidayStartTime(long pEmployeeId) {
-
-        Employee emp = employeeRepository.findById(pEmployeeId).get();
-        HoliDay lcWorkingDay = new HoliDay();
-        lcWorkingDay.setId(emp.getId());
-        lcWorkingDay.setEmployee(emp);
-        lcWorkingDay.setBegin(new Date());
-        emp.getTimeTable().add(lcWorkingDay);
-        employeeRepository.save(emp);
-    }
-
-    public void holidayEndTime(long pEmployeeId) {
-
-        Employee emp = employeeRepository.findById(pEmployeeId).get();
-        HoliDay lcWorkingDay = new HoliDay();
-        lcWorkingDay.setId(emp.getId());
-        lcWorkingDay.setEmployee(emp);
-        lcWorkingDay.setEnd(new Date());
-        emp.getTimeTable().add(lcWorkingDay);
-        employeeRepository.save(emp);
-    }
-}
+*/
+        }
+    }}

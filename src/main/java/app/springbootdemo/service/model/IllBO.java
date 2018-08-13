@@ -5,24 +5,34 @@ import java.util.Date;
 public class IllBO {
 
 
-    private String empId;
+    private long empId;
 
-    private Date illDate;
+    private Date illFromDate;
+
+    private Date illToDate;
 
 
-    public String getEmpId() {
+    public long getEmpId() {
         return empId;
     }
 
-    public void setEmpId(String empId) {
+    public void setEmpId(long empId) {
         this.empId = empId;
     }
 
-    public Date getIllDate() {
-        return illDate;
+    public Date getIllFromDate() {
+        return illFromDate;
     }
 
-    public void setIllDate(Date illDate) {
-        this.illDate = illDate;
+    public void setIllFromDate(Date illFromDate) {
+        this.illFromDate = illFromDate;
+    }
+
+    public Date getIllToDate() {
+        return illToDate;
+    }
+
+    public void setIllToDate(Date illToDate) {
+        this.illToDate = illToDate;
     }
 }

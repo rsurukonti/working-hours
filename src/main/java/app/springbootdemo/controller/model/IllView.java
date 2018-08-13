@@ -7,25 +7,32 @@ import java.util.Set;
 public class IllView {
 
 
+    private long empId;
+    private Date illFromDate;
+    private Date illToDate;
 
-    private String empId;
-
-    private Date illDate;
-
-    public String getEmpId() {
+    public long getEmpId() {
         return empId;
     }
 
-    public void setEmpId(String empId) {
+    public void setEmpId(long empId) {
         this.empId = empId;
     }
 
 
-    public Date getIllDate() {
-        return illDate;
+    public Date getIllFromDate() {
+        return illFromDate;
     }
 
-    public void setIllDate(Date illDate) {
-        this.illDate = illDate;
+    public void setIllFromDate(Date illFromDate) {
+        this.illFromDate = illFromDate;
+    }
+
+    public Date getIllToDate() {
+        return illToDate;
+    }
+
+    public void setIllToDate(Date illToDate) {
+        this.illToDate = illToDate;
     }
 }

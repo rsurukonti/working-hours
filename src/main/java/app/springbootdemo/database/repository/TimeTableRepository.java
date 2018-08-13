@@ -21,7 +21,15 @@ public interface TimeTableRepository extends CrudRepository<TimeTable, Long> {
    //
     //public Employee findEmployeewithId(long id);
 
+
+
    @Query("select t from TimeTable t join t.employee e where e.id = :empId and  t.end IS NULL")
     public Set<TimeTable> findForCurrentTimeTableForEmployee(@Param("empId") Long empId);
+
+   @Query("select t from TimeTable t join t.employee e where e.id = :empId and  t.begin_break IS NULL")
+    public Set<TimeTable> currentTimeTableForEmployee1(@Param("empId") Long empId);
+
+   @Query("select t from TimeTable t join t.employee e where e.id = :empId and  t.end_break IS NULL")
+    public Set<TimeTable> currentTimeTableForEmployee2(@Param("empId") Long empId);
 
 }

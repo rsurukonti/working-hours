@@ -9,7 +9,8 @@ public class IllBOMapper {
 
         IllBO illBO = new IllBO();
         illBO.setEmpId(illView.getEmpId());
-        illBO.setIllDate(illView.getIllDate());
+        illBO.setIllFromDate(illView.getIllFromDate());
+        illBO.setIllToDate(illView.getIllToDate());
 
         return illBO;
     }

@@ -46,6 +46,7 @@ public class EmployeeController {
 
 	@PostMapping(value="/ill" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void ill(@RequestBody IllView illView) {
+		System.out.println("****************************************    " + illView.getEmpId());
 		employeeService.ill(IllBOMapper.from(illView));
 	}
 
@@ -92,7 +93,7 @@ public class EmployeeController {
 		return employeeService.findEmployeewithId(id);
 	}*/
 
-
+/*
 	@PostMapping(value="/employee/illStartTime/{id}" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void illStartTime(@PathVariable long id) {
 		employeeService.illStartTime(id);
@@ -112,5 +113,5 @@ public class EmployeeController {
 	@PostMapping(value="/employee/holidayEndTime/{id}" ,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void holidayEndTime(@PathVariable long id) {
 		employeeService.holidayEndTime(id);
-	}
+	}*/
 }
